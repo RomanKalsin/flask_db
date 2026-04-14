@@ -1,2 +1,8 @@
+include .env
+export
+
 build:
-	./db/build.sh
+	psql -a -d $(DATABASE_URL) -f ./db/init.sql
+
+start_flask:
+	uv run flask --app src.app --debug run --port 8000

@@ -1,0 +1,23 @@
+{% extends "/layout.html" %}
+{% block title %}Пользователи{% endblock %}
+{% block content %}
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Почта</th>
+      </tr>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>
+            <a href="{{ url_for('users.users_show', id=user.id) }}">{{ user.name }}</a>
+          </td>
+          <td>{{ user.email }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
