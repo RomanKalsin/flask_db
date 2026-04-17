@@ -1,0 +1,20 @@
+<div class="form-group">
+    <div>
+        <label>
+            Имя пользователя
+            <input type="text" name="name" value="{{ user.name }}">            
+        </label>
+        {% if errors['name']%}
+            <div class="form-error">{{ errors['name'] }}</div>
+        {% endif %}
+    </div>
+    <div>
+        <label>
+            Электронная почта
+            <input type="text" name="email" value="{{ user.email }}">
+        </label>
+        {% if errors['email']%}
+            <div class="form-error">{{ errors['email'] }}</div>
+        {% endif %}
+    </div>
+</div>

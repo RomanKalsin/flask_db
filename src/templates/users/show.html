@@ -10,4 +10,5 @@
         <dd>{{ user.email }}</dd>
     </dl>
 </div>
+<a href="{{ url_for('users.users_edit', id=user.id) }}" class="btn">Редактировать</a>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "/layout.html" %}
+{% block content %}
+<div class="form-card">
+    <h2>Редактирование</h2>
+    <form action="{{ url_for('users.users_patch', id=user.id) }}" method="post">
+        
+        {% include "users/form.html" %}
+
+        <input type="submit" value="Сохранить">
+    </form>
+    <form action="{{ url_for('users.users_delete', id=user.id) }}" method="post" 
+    onsubmit="return confirm('Вы действительно хотите удалить пользователя?');">
+    <input type="submit" value="Удалить">
+    </form>
+</div>
+{% endblock %}

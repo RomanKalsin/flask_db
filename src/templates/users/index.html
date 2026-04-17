@@ -1,6 +1,10 @@
 {% extends "/layout.html" %}
 {% block title %}Пользователи{% endblock %}
 {% block content %}
+<form class="search-form" action="{{ url_for('users.get_users') }}" method="get">
+    <input type="search" name="query" value="{{ search }}" />
+    <input type="submit" value="Поиск" />
+</form>
 <table>
     <thead>
       <tr>
@@ -20,4 +24,5 @@
       {% endfor %}
     </tbody>
 </table>
+<a href="{{ url_for('users.users_new') }}" class="btn">Добавить пользователя</a>
 {% endblock %}
