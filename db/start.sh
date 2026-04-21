@@ -1,0 +1,2 @@
+#!/bin/bash
+psql $DATABASE_URL -f ./db/init.sql
