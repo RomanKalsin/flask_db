@@ -1,3 +1,4 @@
+import psycopg2
 from flask import (
     render_template,
     Blueprint,
