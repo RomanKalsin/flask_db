@@ -10,9 +10,9 @@ app = Flask(__name__)
 load_dotenv()
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-
-conn = psycopg2.connect(os.getenv('DATABASE_URL'))
-app.config['conn'] = conn
+app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
+#conn = psycopg2.connect(os.getenv('DATABASE_URL'))
+#app.config['conn'] = conn
 
 app.register_blueprint(users_bp)
 app.register_blueprint(index_bp)

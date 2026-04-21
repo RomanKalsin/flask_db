@@ -6,7 +6,8 @@ from flask import (
     redirect,
     url_for,
     flash,
-    get_flashed_messages
+    get_flashed_messages,
+    g
 )
 
 from src.model.users_repository import UserRepository
@@ -15,8 +16,17 @@ from src.model.validators import validate_user
 users_bp = Blueprint("users", __name__, url_prefix="/users")
 
 def get_repo():
-    conn = current_app.config["conn"]
-    return UserRepository(conn)
+    if 'conn' not in g:
+        g.conn = psycopg2.connect(current_app.config['DATABASE_URL'])
+    return UserRepository(g.conn)
+#    conn = current_app.config["conn"]
+#    return UserRepository(conn)
+
+@users_bp.teardown_request
+def close_conn(error):
+    conn = g.pop('conn', None)
+    if conn is not None:
+        conn.close()
 
 @users_bp.route('/')
 def get_users():
