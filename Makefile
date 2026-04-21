@@ -6,3 +6,9 @@ build:
 
 start_flask:
 	uv run flask --app src.app --debug run --port 8000
+
+start_gunicorn:
+	uv run gunicorn
+
+ruff_check:
+	uv run ruff check

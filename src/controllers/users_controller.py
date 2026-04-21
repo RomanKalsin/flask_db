@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from flask import (
     render_template,
     Blueprint,
